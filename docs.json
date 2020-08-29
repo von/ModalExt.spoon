@@ -1,0 +1,414 @@
+[
+  {
+    "Constant" : [
+
+    ],
+    "submodules" : [
+
+    ],
+    "Function" : [
+
+    ],
+    "Variable" : [
+      {
+        "doc" : "Some exposed configuration variable.",
+        "stripped_doc" : [
+          "Some exposed configuration variable."
+        ],
+        "def" : "ModalExt.some_variable",
+        "parameters" : [
+
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt.some_variable",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "some_variable",
+        "desc" : "Some exposed configuration variable."
+      }
+    ],
+    "stripped_doc" : [
+
+    ],
+    "Deprecated" : [
+
+    ],
+    "desc" : "Kudos for cheatsheet: https:\/\/github.com\/ashfinal\/awesome-hammerspoon",
+    "type" : "Module",
+    "Constructor" : [
+
+    ],
+    "doc" : "Extended hotkey modal support.\nKudos for cheatsheet: https:\/\/github.com\/ashfinal\/awesome-hammerspoon",
+    "Field" : [
+
+    ],
+    "Command" : [
+
+    ],
+    "Method" : [
+      {
+        "doc" : "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
+        "stripped_doc" : [
+          "Enable or disable debugging",
+          ""
+        ],
+        "def" : "ModalExt:debug(enable)",
+        "parameters" : [
+          " * enable - Boolean indicating whether debugging should be on",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:debug(enable)",
+        "type" : "Method",
+        "returns" : [
+          " * Nothing"
+        ],
+        "name" : "debug",
+        "desc" : "Enable or disable debugging"
+      },
+      {
+        "doc" : "Initializes a ModalExt\nWhen a user calls hs.loadSpoon(), Hammerspoon will execute init()\nDo generally not perform any work, map any hotkeys, start any timers\/watchers\/etc.\nin the main scope of your init.lua. Instead, it should simply prepare an object\nwith methods to be used later, then return the object.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
+        "stripped_doc" : [
+          "Initializes a ModalExt",
+          "When a user calls hs.loadSpoon(), Hammerspoon will execute init()",
+          "Do generally not perform any work, map any hotkeys, start any timers\/watchers\/etc.",
+          "in the main scope of your init.lua. Instead, it should simply prepare an object",
+          "with methods to be used later, then return the object.",
+          ""
+        ],
+        "def" : "ModalExt:init()",
+        "parameters" : [
+          " * None",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:init()",
+        "type" : "Method",
+        "returns" : [
+          " * ModalExt object"
+        ],
+        "name" : "init",
+        "desc" : "Initializes a ModalExt"
+      },
+      {
+        "doc" : "Start background activity.\n\nParameters:\n * param - Some parameter\n\nReturns:\n * ModalExt object",
+        "stripped_doc" : [
+          "Start background activity.",
+          ""
+        ],
+        "def" : "ModalExt:start()",
+        "parameters" : [
+          " * param - Some parameter",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:start()",
+        "type" : "Method",
+        "returns" : [
+          " * ModalExt object"
+        ],
+        "name" : "start",
+        "desc" : "Start background activity."
+      },
+      {
+        "doc" : "Stop background activity.\n\nParameters:\n * param - Some parameter\n\nReturns:\n * ModalExt object",
+        "stripped_doc" : [
+          "Stop background activity.",
+          ""
+        ],
+        "def" : "ModalExt:stop()",
+        "parameters" : [
+          " * param - Some parameter",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:stop()",
+        "type" : "Method",
+        "returns" : [
+          " * ModalExt object"
+        ],
+        "name" : "stop",
+        "desc" : "Stop background activity."
+      },
+      {
+        "doc" : "Create a new modal hotkey using bindings from the given table. Table elements are\nas follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n\nParameters:\n* modalConfig: Table with configuration\n\nReturns:\n* hs.hotkey.modal instance",
+        "stripped_doc" : [
+          "Create a new modal hotkey using bindings from the given table. Table elements are",
+          "as follows:",
+          "  * mod: table with hotkey modifiers",
+          "  * key: string with hotkey",
+          "  * title: string with modal title",
+          "  * keyTable: Dictionary",
+          "    * keys are strings descripbing keys to be active in modal",
+          "    * values are dictionary:",
+          "      * mod: Optional table of modifers for key.",
+          "      * func: Function to call when key pressed",
+          "      * desc: Description of action",
+          ""
+        ],
+        "def" : "ModalExt:new()",
+        "parameters" : [
+          "* modalConfig: Table with configuration",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:new()",
+        "type" : "Method",
+        "returns" : [
+          "* hs.hotkey.modal instance"
+        ],
+        "name" : "new",
+        "desc" : "Create a new modal hotkey using bindings from the given table. Table elements are"
+      },
+      {
+        "doc" : "Hide the cheatsheet.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
+        "stripped_doc" : [
+          "Hide the cheatsheet.",
+          ""
+        ],
+        "def" : "ModalExt:hideCheatsheet()",
+        "parameters" : [
+          "* None",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:hideCheatsheet()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "hideCheatsheet",
+        "desc" : "Hide the cheatsheet."
+      },
+      {
+        "doc" : "Show a cheatsheet with available hotkeys for the current modal.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
+        "stripped_doc" : [
+          "Show a cheatsheet with available hotkeys for the current modal.",
+          ""
+        ],
+        "def" : "ModalExt:showCheatsheet()",
+        "parameters" : [
+          "* None",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:showCheatsheet()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "showCheatsheet",
+        "desc" : "Show a cheatsheet with available hotkeys for the current modal."
+      }
+    ],
+    "items" : [
+      {
+        "doc" : "Some exposed configuration variable.",
+        "stripped_doc" : [
+          "Some exposed configuration variable."
+        ],
+        "def" : "ModalExt.some_variable",
+        "parameters" : [
+
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt.some_variable",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "name" : "some_variable",
+        "desc" : "Some exposed configuration variable."
+      },
+      {
+        "doc" : "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
+        "stripped_doc" : [
+          "Enable or disable debugging",
+          ""
+        ],
+        "def" : "ModalExt:debug(enable)",
+        "parameters" : [
+          " * enable - Boolean indicating whether debugging should be on",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:debug(enable)",
+        "type" : "Method",
+        "returns" : [
+          " * Nothing"
+        ],
+        "name" : "debug",
+        "desc" : "Enable or disable debugging"
+      },
+      {
+        "doc" : "Hide the cheatsheet.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
+        "stripped_doc" : [
+          "Hide the cheatsheet.",
+          ""
+        ],
+        "def" : "ModalExt:hideCheatsheet()",
+        "parameters" : [
+          "* None",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:hideCheatsheet()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "hideCheatsheet",
+        "desc" : "Hide the cheatsheet."
+      },
+      {
+        "doc" : "Initializes a ModalExt\nWhen a user calls hs.loadSpoon(), Hammerspoon will execute init()\nDo generally not perform any work, map any hotkeys, start any timers\/watchers\/etc.\nin the main scope of your init.lua. Instead, it should simply prepare an object\nwith methods to be used later, then return the object.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
+        "stripped_doc" : [
+          "Initializes a ModalExt",
+          "When a user calls hs.loadSpoon(), Hammerspoon will execute init()",
+          "Do generally not perform any work, map any hotkeys, start any timers\/watchers\/etc.",
+          "in the main scope of your init.lua. Instead, it should simply prepare an object",
+          "with methods to be used later, then return the object.",
+          ""
+        ],
+        "def" : "ModalExt:init()",
+        "parameters" : [
+          " * None",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:init()",
+        "type" : "Method",
+        "returns" : [
+          " * ModalExt object"
+        ],
+        "name" : "init",
+        "desc" : "Initializes a ModalExt"
+      },
+      {
+        "doc" : "Create a new modal hotkey using bindings from the given table. Table elements are\nas follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n\nParameters:\n* modalConfig: Table with configuration\n\nReturns:\n* hs.hotkey.modal instance",
+        "stripped_doc" : [
+          "Create a new modal hotkey using bindings from the given table. Table elements are",
+          "as follows:",
+          "  * mod: table with hotkey modifiers",
+          "  * key: string with hotkey",
+          "  * title: string with modal title",
+          "  * keyTable: Dictionary",
+          "    * keys are strings descripbing keys to be active in modal",
+          "    * values are dictionary:",
+          "      * mod: Optional table of modifers for key.",
+          "      * func: Function to call when key pressed",
+          "      * desc: Description of action",
+          ""
+        ],
+        "def" : "ModalExt:new()",
+        "parameters" : [
+          "* modalConfig: Table with configuration",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:new()",
+        "type" : "Method",
+        "returns" : [
+          "* hs.hotkey.modal instance"
+        ],
+        "name" : "new",
+        "desc" : "Create a new modal hotkey using bindings from the given table. Table elements are"
+      },
+      {
+        "doc" : "Show a cheatsheet with available hotkeys for the current modal.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
+        "stripped_doc" : [
+          "Show a cheatsheet with available hotkeys for the current modal.",
+          ""
+        ],
+        "def" : "ModalExt:showCheatsheet()",
+        "parameters" : [
+          "* None",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:showCheatsheet()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "showCheatsheet",
+        "desc" : "Show a cheatsheet with available hotkeys for the current modal."
+      },
+      {
+        "doc" : "Start background activity.\n\nParameters:\n * param - Some parameter\n\nReturns:\n * ModalExt object",
+        "stripped_doc" : [
+          "Start background activity.",
+          ""
+        ],
+        "def" : "ModalExt:start()",
+        "parameters" : [
+          " * param - Some parameter",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:start()",
+        "type" : "Method",
+        "returns" : [
+          " * ModalExt object"
+        ],
+        "name" : "start",
+        "desc" : "Start background activity."
+      },
+      {
+        "doc" : "Stop background activity.\n\nParameters:\n * param - Some parameter\n\nReturns:\n * ModalExt object",
+        "stripped_doc" : [
+          "Stop background activity.",
+          ""
+        ],
+        "def" : "ModalExt:stop()",
+        "parameters" : [
+          " * param - Some parameter",
+          ""
+        ],
+        "notes" : [
+
+        ],
+        "signature" : "ModalExt:stop()",
+        "type" : "Method",
+        "returns" : [
+          " * ModalExt object"
+        ],
+        "name" : "stop",
+        "desc" : "Stop background activity."
+      }
+    ],
+    "name" : "ModalExt"
+  }
+]
