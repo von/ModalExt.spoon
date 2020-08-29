@@ -11,7 +11,7 @@ ModalExt.version="0.1"
 ModalExt.author="Von Welch"
 -- https://opensource.org/licenses/Apache-2.0
 ModalExt.license="Apache-2.0"
-ModalExt.homepage=""
+ModalExt.homepage="https://github.com/von/ModalExt.spoon"
 
 --- ModalExt.some_variable
 --- Variable
