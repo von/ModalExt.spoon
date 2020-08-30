@@ -80,22 +80,17 @@ function ModalExt:init()
   return self
 end
 
---start() and stop()
---If your Spoon provides some kind of background activity, e.g. timers, watchers,
---spotlight searches, etc. you should generally activate them in a :start()
---method, and de-activate them in a :stop() method
-
 --- ModalExt:start()
 --- Method
---- Start background activity.
+--- Start background activity. Currently does nothing.
 ---
 --- Parameters:
----  * param - Some parameter
+---  * None
 ---
 --- Returns:
 ---  * ModalExt object
 function ModalExt:start()
-  -- Code here
+  -- No-op
   return self
 end
 
@@ -104,12 +99,12 @@ end
 --- Stop background activity.
 ---
 --- Parameters:
----  * param - Some parameter
+---  * None
 ---
 --- Returns:
 ---  * ModalExt object
 function ModalExt:stop()
-  -- Code here
+  self:hideCheatsheet()
   return self
 end
 
