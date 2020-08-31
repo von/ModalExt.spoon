@@ -7,7 +7,7 @@ local ModalExt = {}
 
 -- Metadata
 ModalExt.name="ModalExt"
-ModalExt.version="0.1"
+ModalExt.version="0.2"
 ModalExt.author="Von Welch"
 -- https://opensource.org/licenses/Apache-2.0
 ModalExt.license="Apache-2.0"
@@ -62,23 +62,42 @@ function ModalExt:init()
   -- Currently active modal
   self.activeModal = nil
 
+  -- Timer for delayed cheatsheet
+  self.cheatsheetTimer = nil
+
   -- Currently displayed cheetsheet
   self.cheatsheetBG = nil
   self.cheatsheetText = nil
 
-  -- Cheatsheet configuration
-  self.cheatsheetFont = { name="Courier-Bold", size=16 }
-  self.cheatsheetBGColor = { red=0, blue=0, green=0, alpha=0.5}
-  self.cheatsheetFGColor = { list="ansiTerminalColors", name="fgWhite" }
-  self.cheatsheetParagraphStyle = { lineSpacing=12.0, lineBreak='truncateMiddle' }
-  -- Horizontal and vertical margins in pixels
-  self.cheatsheetHMargin = 40
-  self.cheatsheetVMargin = 40
-  -- Width in characters
-  self.cheatsheetWidth = 70
-
   return self
 end
+
+--- ModalExt.defaults
+--- Variable
+--- Dictionary of defaults:
+---   * showCheatsheet: Boolean, default is true
+---   * cheatsheetDelay: Number of seconds, default is 0
+---   * cheatsheetFadeTime: Number of seconds to fade in, default is .5
+---   * cheatsheetFont: Table describing font as descrined in hs.styledtext
+---   * cheatsheetBGColor: Table describing background color per hs.drawing.color
+---   * cheatsheetFGColor: Table describing foreground color per hs.drawing.color
+---   * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext
+---   * cheatsheetHMargin: horizontal margin between text and edge of background in pixels
+---   * cheatsheetVMargin: virtucal margin between text and edge of background in pixels
+ModalExt.defaults = {
+  showCheatsheet = true,
+  cheatsheetDelay = 0,
+  cheatsheetFadeTime = .5,
+
+  -- Cheatsheet Appearance
+  cheatsheetFont = { name="Courier-Bold", size=16 },
+  cheatsheetBGColor = { red=0, blue=0, green=0, alpha=0.5},
+  cheatsheetFGColor = { list="ansiTerminalColors", name="fgWhite" },
+  cheatsheetParagraphStyle = { lineSpacing=12.0, lineBreak='truncateMiddle' },
+  -- Horizontal and vertical margins in pixels
+  cheatsheetHMargin = 40,
+  cheatsheetVMargin = 40,
+}
 
 --- ModalExt:start()
 --- Method
@@ -121,14 +140,25 @@ end
 ---       * mod: Optional table of modifers for key.
 ---       * func: Function to call when key pressed
 ---       * desc: Description of action
+---   * extConfg: Optional dictionary with extended configuration, all optional.
+---     See ModalExt.defaults for values.
 ---
 --- Parameters:
 --- * modalConfig: Table with configuration
 ---
 --- Returns:
 --- * hs.hotkey.modal instance
-function ModalExt:new(mod, key, title, modalConfig)
+function ModalExt:new(mod, key, title, modalConfig, extConfig)
   self.log.df("Creating modal for %s (%s)", key, title)
+
+  -- Defaults, overridden by extConfig
+  local defaults = hs.fnutils.copy(ModalExt.defaults)
+  if extConfig then
+    for k,v in pairs(extConfig) do
+      defaults[k] = v
+    end
+  end
+
   local modalKey = hs.hotkey.modal.new(mod, key, title)
   if not modalKey then
     self.log.e("Failed to create modalKey")
@@ -160,6 +190,7 @@ function ModalExt:new(mod, key, title, modalConfig)
   -- Escape exits the modal
   modalKey:bind(NoMod, "escape", "Cancel", function() modalKey:exit() end)
 
+
 -- Callback for modal being entered. Exits other modal that may
 -- be active and show cheatsheet.
   modalKey.entered = function()
@@ -167,7 +198,11 @@ function ModalExt:new(mod, key, title, modalConfig)
       self.activeModal:exit()
     end
     self.activeModal = modalKey
-    self:showCheatsheet()
+    if defaults.showCheatsheet then
+        self.cheatsheetTimer = hs.timer.doAfter(
+          defaults.cheatsheetDelay,
+          function() self:showCheatsheet(defaults) end)
+    end
   end
 
   -- Callback for modal being exited. Hide cheatsheet.
@@ -189,6 +224,9 @@ end
 --- Returns:
 --- * Nothing
 function ModalExt:hideCheatsheet()
+  if self.cheatsheetTimer then
+    self.cheatsheetTimer:stop()
+  end
   -- The disableScreenUpdates() and subsequent enableScreenUpdates()
   -- seems to make sure the help text actually gets off the screen
   -- before we execute our function, which is important if we're
@@ -214,11 +252,13 @@ end
 --- Show a cheatsheet with available hotkeys for the current modal.
 ---
 --- Parameters:
---- * None
+--- * defaults: copy of ModalExt.defaults
 ---
 --- Returns:
 --- * Nothing
-function ModalExt:showCheatsheet()
+function ModalExt:showCheatsheet(defaults)
+  -- Hide any outstanding cheatsheet
+  -- This will also cancel any outstanding cheatsheet timer
   self:hideCheatsheet()
 
   -- The cheatsheet is constructed from three elements, a background rectangle
@@ -230,25 +270,25 @@ function ModalExt:showCheatsheet()
 
   local rectBG = hs.geometry.rect(mainRes.w/5, mainRes.h/5, mainRes.w/5*3, mainRes.h/5*3)
   self.cheatsheetBG = hs.drawing.rectangle(rectBG)
-  self.cheatsheetBG:setFillColor(self.cheatsheetBGColor)
+  self.cheatsheetBG:setFillColor(defaults.cheatsheetBGColor)
   self.cheatsheetBG:setRoundedRectRadii(10, 10)
   self.cheatsheetBG:setLevel(hs.drawing.windowLevels.modalPanel)
   self.cheatsheetBG:setBehavior(hs.drawing.windowBehaviors.stationary)
 
   local rectLeft = hs.geometry.rect(
-    rectBG.x + self.cheatsheetHMargin,
-    rectBG.y + self.cheatsheetVMargin,
-    (rectBG.w - self.cheatsheetHMargin)/2,
-    (rectBG.h - self.cheatsheetVMargin)/2)
+    rectBG.x + defaults.cheatsheetHMargin,
+    rectBG.y + defaults.cheatsheetVMargin,
+    (rectBG.w - defaults.cheatsheetHMargin)/2,
+    (rectBG.h - defaults.cheatsheetVMargin)/2)
   self.cheatsheetTextLeft = hs.drawing.text(rectLeft, "")
   self.cheatsheetTextLeft:setLevel(hs.drawing.windowLevels.modalPanel)
   self.cheatsheetTextLeft:setBehavior(hs.drawing.windowBehaviors.stationary)
 
   local rectRight = hs.geometry.rect(
-    rectBG.x + rectBG.w/2 + self.cheatsheetHMargin/2,
-    rectBG.y + self.cheatsheetVMargin,
-    (rectBG.w - self.cheatsheetHMargin)/2,
-    (rectBG.h - self.cheatsheetVMargin)/2)
+    rectBG.x + rectBG.w/2 + defaults.cheatsheetHMargin/2,
+    rectBG.y + defaults.cheatsheetVMargin,
+    (rectBG.w - defaults.cheatsheetHMargin)/2,
+    (rectBG.h - defaults.cheatsheetVMargin)/2)
   self.cheatsheetTextRight = hs.drawing.text(rectRight, "")
   self.cheatsheetTextRight:setLevel(hs.drawing.windowLevels.modalPanel)
   self.cheatsheetTextRight:setBehavior(hs.drawing.windowBehaviors.stationary)
@@ -265,18 +305,18 @@ function ModalExt:showCheatsheet()
   end
 
   local style = {
-      font = self.cheatsheetFont,
-      color = self.cheatsheetFGColor,
-      paragraphStyle = self.cheatsheetParagraphStyle
+      font = defaults.cheatsheetFont,
+      color = defaults.cheatsheetFGColor,
+      paragraphStyle = defaults.cheatsheetParagraphStyle
     }
   local stextLeft = hs.styledtext.new(textLeft, style)
   self.cheatsheetTextLeft:setStyledText(stextLeft)
   local stextRight = hs.styledtext.new(textRight, style)
   self.cheatsheetTextRight:setStyledText(stextRight)
 
-  self.cheatsheetBG:show()
-  self.cheatsheetTextLeft:show()
-  self.cheatsheetTextRight:show()
+  self.cheatsheetBG:show(defaults.cheatsheetFadeTime)
+  self.cheatsheetTextLeft:show(defaults.cheatsheetFadeTime)
+  self.cheatsheetTextRight:show(defaults.cheatsheetFadeTime)
 end
 
 return ModalExt
