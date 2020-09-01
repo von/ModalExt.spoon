@@ -7,7 +7,7 @@ local ModalExt = {}
 
 -- Metadata
 ModalExt.name="ModalExt"
-ModalExt.version="0.2"
+ModalExt.version="0.3"
 ModalExt.author="Von Welch"
 -- https://opensource.org/licenses/Apache-2.0
 ModalExt.license="Apache-2.0"
@@ -293,7 +293,11 @@ function ModalExt:showCheatsheet(defaults)
   self.cheatsheetTextRight:setLevel(hs.drawing.windowLevels.modalPanel)
   self.cheatsheetTextRight:setBehavior(hs.drawing.windowBehaviors.stationary)
 
-  local hotkeys = hs.hotkey.getHotkeys()
+  -- Filter out all hotkeys which don't have a help string defined
+  local hotkeys = hs.fnutils.filter(
+    hs.hotkey.getHotkeys(),
+    function(h) return h.msg ~= h.idx end)
+
   local textLeft = ""
   local textRight = ""
   for i=1,#hotkeys do
