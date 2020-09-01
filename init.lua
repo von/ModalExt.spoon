@@ -279,7 +279,7 @@ function ModalExt:showCheatsheet(defaults)
     rectBG.x + defaults.cheatsheetHMargin,
     rectBG.y + defaults.cheatsheetVMargin,
     (rectBG.w - defaults.cheatsheetHMargin)/2,
-    (rectBG.h - defaults.cheatsheetVMargin)/2)
+    rectBG.h - defaults.cheatsheetVMargin*2)
   self.cheatsheetTextLeft = hs.drawing.text(rectLeft, "")
   self.cheatsheetTextLeft:setLevel(hs.drawing.windowLevels.modalPanel)
   self.cheatsheetTextLeft:setBehavior(hs.drawing.windowBehaviors.stationary)
@@ -288,7 +288,7 @@ function ModalExt:showCheatsheet(defaults)
     rectBG.x + rectBG.w/2 + defaults.cheatsheetHMargin/2,
     rectBG.y + defaults.cheatsheetVMargin,
     (rectBG.w - defaults.cheatsheetHMargin)/2,
-    (rectBG.h - defaults.cheatsheetVMargin)/2)
+    rectBG.h - defaults.cheatsheetVMargin*2)
   self.cheatsheetTextRight = hs.drawing.text(rectRight, "")
   self.cheatsheetTextRight:setLevel(hs.drawing.windowLevels.modalPanel)
   self.cheatsheetTextRight:setBehavior(hs.drawing.windowBehaviors.stationary)
