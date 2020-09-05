@@ -13,11 +13,6 @@ ModalExt.author="Von Welch"
 ModalExt.license="Apache-2.0"
 ModalExt.homepage="https://github.com/von/ModalExt.spoon"
 
---- ModalExt.some_variable
---- Variable
---- Some exposed configuration variable.
-ModalExt.some_variable = 42
-
 --- ModalExt:debug(enable)
 --- Method
 --- Enable or disable debugging
