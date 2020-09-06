@@ -7,7 +7,7 @@ local ModalExt = {}
 
 -- Metadata
 ModalExt.name="ModalExt"
-ModalExt.version="0.3"
+ModalExt.version="0.4"
 ModalExt.author="Von Welch"
 -- https://opensource.org/licenses/Apache-2.0
 ModalExt.license="Apache-2.0"
