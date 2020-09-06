@@ -169,6 +169,9 @@ end
 ---   * extConfg: Optional dictionary with extended configuration, all optional.
 ---     See ModalExt.defaults for values.
 ---
+--- An empty keyTable will result in a modal that shows the cheetsheet for the base
+--- set of hotkeys. This can be useful in providing a help function of sorts.
+---
 --- Parameters:
 --- * modalConfig: Table with configuration
 ---
