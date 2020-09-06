@@ -13,6 +13,37 @@ ModalExt.author="Von Welch"
 ModalExt.license="Apache-2.0"
 ModalExt.homepage="https://github.com/von/ModalExt.spoon"
 
+
+--- ModalExt.modifiers
+--- Variable
+--- Dictionary with keys that serve as aliases for all the various modifer key
+--- combinations. "opt" is an alias for "alt".
+--- Keys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,
+--- cmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,
+--- cmdCtrlOptShift, all
+ModalExt.modifiers = {
+  none =            {},
+  ctrl =            {'ctrl'},
+  cmd =             {'cmd'},
+  alt =             {'alt'},
+  opt =             {'alt'},
+  altShift =        {'alt', 'shift'},
+  optShift =        {'alt', 'shift'},
+  cmdAlt =          {'cmd', 'alt'},
+  cmdOpt =          {'cmd', 'alt'},
+  cmdShift =        {'cmd', 'shift'},
+  ctrlShift =       {'ctrl', 'shift'},
+  cmdCtrl =         {'cmd', 'ctrl'},
+  ctrlAlt =         {'ctrl', 'alt'},
+  ctrlOpt =         {'ctrl', 'alt'},
+  cmdCtrlShift =    {'cmd', 'ctrl', 'shift'},
+  cmdAltShift =     {'cmd', 'alt', 'ctrl'},
+  cmdOptShift =     {'cmd', 'alt', 'ctrl'},
+  cmdCtrlOptShift = {'cmd', 'alt', 'ctrl', 'shift' },
+  all =             {'cmd', 'alt', 'ctrl', 'shift' }
+}
+
+
 --- ModalExt:debug(enable)
 --- Method
 --- Enable or disable debugging
