@@ -200,7 +200,7 @@ function ModalExt:new(mod, key, title, modalConfig, extConfig)
       modalKey:exit()
       local result, errormsg = xpcall(func, debug.traceback)
       if not result then
-        log.e("Error executing hotkey: " .. errormsg)
+        self.log.e("Error executing hotkey: " .. errormsg)
         hs.alert.show("Error executing hotkey")
       end
     end
