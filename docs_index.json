@@ -1,0 +1,61 @@
+[
+  {
+    "desc": "Kudos for cheatsheet: https://github.com/ashfinal/awesome-hammerspoon",
+    "name": "ModalExt",
+    "type": "Module"
+  },
+  {
+    "desc": "Dictionary of defaults:",
+    "module": "ModalExt",
+    "name": "defaults",
+    "type": "Variable"
+  },
+  {
+    "desc": "Dictionary with keys that serve as aliases for all the various modifer key",
+    "module": "ModalExt",
+    "name": "modifiers",
+    "type": "Variable"
+  },
+  {
+    "desc": "Enable or disable debugging",
+    "module": "ModalExt",
+    "name": "debug",
+    "type": "Function"
+  },
+  {
+    "desc": "Initializes a ModalExt",
+    "module": "ModalExt",
+    "name": "init",
+    "type": "Function"
+  },
+  {
+    "desc": "Start background activity. Currently does nothing.",
+    "module": "ModalExt",
+    "name": "start",
+    "type": "Function"
+  },
+  {
+    "desc": "Stop background activity.",
+    "module": "ModalExt",
+    "name": "stop",
+    "type": "Function"
+  },
+  {
+    "desc": "Create a new modal hotkey using bindings from the given table. Table elements are",
+    "module": "ModalExt",
+    "name": "new",
+    "type": "Constructor"
+  },
+  {
+    "desc": "Hide the cheatsheet.",
+    "module": "ModalExt",
+    "name": "hideCheatsheet",
+    "type": "Method"
+  },
+  {
+    "desc": "Show a cheatsheet with available hotkeys for the current modal.",
+    "module": "ModalExt",
+    "name": "showCheatsheet",
+    "type": "Method"
+  }
+]

@@ -1,490 +1,270 @@
 [
   {
-    "Constant" : [
-
-    ],
-    "submodules" : [
-
-    ],
-    "Function" : [
-
-    ],
-    "Variable" : [
+    "Command": [],
+    "Constant": [],
+    "Constructor": [
       {
-        "def" : "ModalExt.modifiers",
-        "stripped_doc" : [
-          "Dictionary with keys that serve as aliases for all the various modifer key",
-          "combinations. \"opt\" is an alias for \"alt\".",
-          "Keys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,",
-          "cmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,",
-          "cmdCtrlOptShift, all"
+        "def": "ModalExt:new()",
+        "desc": "Create a new modal hotkey using bindings from the given table. Table elements are",
+        "doc": "Create a new modal hotkey using bindings from the given table. Table elements are\nas follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\n\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.\n\nParameters:\n* modalConfig: Table with configuration\n\nReturns:\n* hs.hotkey.modal instance",
+        "name": "new",
+        "parameters": [
+          "* modalConfig: Table with configuration"
         ],
-        "desc" : "Dictionary with keys that serve as aliases for all the various modifer key",
-        "doc" : "Dictionary with keys that serve as aliases for all the various modifer key\ncombinations. \"opt\" is an alias for \"alt\".\nKeys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,\ncmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,\ncmdCtrlOptShift, all",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt.modifiers",
-        "type" : "Variable",
-        "returns" : [
-
-        ],
-        "name" : "modifiers",
-        "parameters" : [
-
-        ]
-      },
-      {
-        "def" : "ModalExt.defaults",
-        "stripped_doc" : [
-          "Dictionary of defaults:",
-          "  * showCheatsheet: Boolean, default is true",
-          "  * cheatsheetDelay: Number of seconds, default is 0",
-          "  * cheatsheetFadeTime: Number of seconds to fade in, default is .5",
-          "  * cheatsheetFont: Table describing font as descrined in hs.styledtext",
-          "  * cheatsheetBGColor: Table describing background color per hs.drawing.color",
-          "  * cheatsheetFGColor: Table describing foreground color per hs.drawing.color",
-          "  * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext",
-          "  * cheatsheetHMargin: horizontal margin between text and edge of background in pixels",
-          "  * cheatsheetVMargin: virtucal margin between text and edge of background in pixels"
-        ],
-        "desc" : "Dictionary of defaults:",
-        "doc" : "Dictionary of defaults:\n  * showCheatsheet: Boolean, default is true\n  * cheatsheetDelay: Number of seconds, default is 0\n  * cheatsheetFadeTime: Number of seconds to fade in, default is .5\n  * cheatsheetFont: Table describing font as descrined in hs.styledtext\n  * cheatsheetBGColor: Table describing background color per hs.drawing.color\n  * cheatsheetFGColor: Table describing foreground color per hs.drawing.color\n  * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext\n  * cheatsheetHMargin: horizontal margin between text and edge of background in pixels\n  * cheatsheetVMargin: virtucal margin between text and edge of background in pixels",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt.defaults",
-        "type" : "Variable",
-        "returns" : [
-
-        ],
-        "name" : "defaults",
-        "parameters" : [
-
-        ]
-      }
-    ],
-    "stripped_doc" : [
-
-    ],
-    "type" : "Module",
-    "Deprecated" : [
-
-    ],
-    "desc" : "Kudos for cheatsheet: https:\/\/github.com\/ashfinal\/awesome-hammerspoon",
-    "Constructor" : [
-
-    ],
-    "Field" : [
-
-    ],
-    "Method" : [
-      {
-        "def" : "ModalExt:debug(enable)",
-        "stripped_doc" : [
-          "Enable or disable debugging",
-          ""
-        ],
-        "desc" : "Enable or disable debugging",
-        "doc" : "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:debug(enable)",
-        "type" : "Method",
-        "returns" : [
-          " * Nothing"
-        ],
-        "name" : "debug",
-        "parameters" : [
-          " * enable - Boolean indicating whether debugging should be on",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:init()",
-        "stripped_doc" : [
-          "Initializes a ModalExt",
-          "When a user calls hs.loadSpoon(), Hammerspoon will execute init()",
-          "Do generally not perform any work, map any hotkeys, start any timers\/watchers\/etc.",
-          "in the main scope of your init.lua. Instead, it should simply prepare an object",
-          "with methods to be used later, then return the object.",
-          ""
-        ],
-        "desc" : "Initializes a ModalExt",
-        "doc" : "Initializes a ModalExt\nWhen a user calls hs.loadSpoon(), Hammerspoon will execute init()\nDo generally not perform any work, map any hotkeys, start any timers\/watchers\/etc.\nin the main scope of your init.lua. Instead, it should simply prepare an object\nwith methods to be used later, then return the object.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:init()",
-        "type" : "Method",
-        "returns" : [
-          " * ModalExt object"
-        ],
-        "name" : "init",
-        "parameters" : [
-          " * None",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:start()",
-        "stripped_doc" : [
-          "Start background activity. Currently does nothing.",
-          ""
-        ],
-        "desc" : "Start background activity. Currently does nothing.",
-        "doc" : "Start background activity. Currently does nothing.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:start()",
-        "type" : "Method",
-        "returns" : [
-          " * ModalExt object"
-        ],
-        "name" : "start",
-        "parameters" : [
-          " * None",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:stop()",
-        "stripped_doc" : [
-          "Stop background activity.",
-          ""
-        ],
-        "desc" : "Stop background activity.",
-        "doc" : "Stop background activity.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:stop()",
-        "type" : "Method",
-        "returns" : [
-          " * ModalExt object"
-        ],
-        "name" : "stop",
-        "parameters" : [
-          " * None",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:new()",
-        "stripped_doc" : [
-          "Create a new modal hotkey using bindings from the given table. Table elements are",
-          "as follows:",
-          "  * mod: table with hotkey modifiers",
-          "  * key: string with hotkey",
-          "  * title: string with modal title",
-          "  * keyTable: Dictionary",
-          "    * keys are strings descripbing keys to be active in modal",
-          "    * values are dictionary:",
-          "      * mod: Optional table of modifers for key.",
-          "      * func: Function to call when key pressed",
-          "      * desc: Description of action",
-          "  * extConfg: Optional dictionary with extended configuration, all optional.",
-          "    See ModalExt.defaults for values.",
-          "",
-          "An empty keyTable will result in a modal that shows the cheetsheet for the base",
-          "set of hotkeys. This can be useful in providing a help function of sorts.",
-          ""
-        ],
-        "desc" : "Create a new modal hotkey using bindings from the given table. Table elements are",
-        "doc" : "Create a new modal hotkey using bindings from the given table. Table elements are\nas follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\n\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.\n\nParameters:\n* modalConfig: Table with configuration\n\nReturns:\n* hs.hotkey.modal instance",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:new()",
-        "type" : "Method",
-        "returns" : [
+        "returns": [
           "* hs.hotkey.modal instance"
         ],
-        "name" : "new",
-        "parameters" : [
-          "* modalConfig: Table with configuration",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:hideCheatsheet()",
-        "stripped_doc" : [
-          "Hide the cheatsheet.",
-          ""
-        ],
-        "desc" : "Hide the cheatsheet.",
-        "doc" : "Hide the cheatsheet.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:hideCheatsheet()",
-        "type" : "Method",
-        "returns" : [
-          "* Nothing"
-        ],
-        "name" : "hideCheatsheet",
-        "parameters" : [
-          "* None",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:showCheatsheet()",
-        "stripped_doc" : [
-          "Show a cheatsheet with available hotkeys for the current modal.",
-          ""
-        ],
-        "desc" : "Show a cheatsheet with available hotkeys for the current modal.",
-        "doc" : "Show a cheatsheet with available hotkeys for the current modal.\n\nParameters:\n* defaults: copy of ModalExt.defaults\n\nReturns:\n* Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:showCheatsheet()",
-        "type" : "Method",
-        "returns" : [
-          "* Nothing"
-        ],
-        "name" : "showCheatsheet",
-        "parameters" : [
-          "* defaults: copy of ModalExt.defaults",
-          ""
-        ]
+        "signature": "ModalExt:new()",
+        "stripped_doc": "as follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.",
+        "type": "Constructor"
       }
     ],
-    "Command" : [
-
-    ],
-    "items" : [
+    "Deprecated": [],
+    "Field": [],
+    "Function": [
       {
-        "def" : "ModalExt.defaults",
-        "stripped_doc" : [
-          "Dictionary of defaults:",
-          "  * showCheatsheet: Boolean, default is true",
-          "  * cheatsheetDelay: Number of seconds, default is 0",
-          "  * cheatsheetFadeTime: Number of seconds to fade in, default is .5",
-          "  * cheatsheetFont: Table describing font as descrined in hs.styledtext",
-          "  * cheatsheetBGColor: Table describing background color per hs.drawing.color",
-          "  * cheatsheetFGColor: Table describing foreground color per hs.drawing.color",
-          "  * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext",
-          "  * cheatsheetHMargin: horizontal margin between text and edge of background in pixels",
-          "  * cheatsheetVMargin: virtucal margin between text and edge of background in pixels"
+        "def": "ModalExt:debug(enable)",
+        "desc": "Enable or disable debugging",
+        "doc": "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
+        "name": "debug",
+        "parameters": [
+          " * enable - Boolean indicating whether debugging should be on"
         ],
-        "desc" : "Dictionary of defaults:",
-        "doc" : "Dictionary of defaults:\n  * showCheatsheet: Boolean, default is true\n  * cheatsheetDelay: Number of seconds, default is 0\n  * cheatsheetFadeTime: Number of seconds to fade in, default is .5\n  * cheatsheetFont: Table describing font as descrined in hs.styledtext\n  * cheatsheetBGColor: Table describing background color per hs.drawing.color\n  * cheatsheetFGColor: Table describing foreground color per hs.drawing.color\n  * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext\n  * cheatsheetHMargin: horizontal margin between text and edge of background in pixels\n  * cheatsheetVMargin: virtucal margin between text and edge of background in pixels",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt.defaults",
-        "type" : "Variable",
-        "returns" : [
-
-        ],
-        "name" : "defaults",
-        "parameters" : [
-
-        ]
-      },
-      {
-        "def" : "ModalExt.modifiers",
-        "stripped_doc" : [
-          "Dictionary with keys that serve as aliases for all the various modifer key",
-          "combinations. \"opt\" is an alias for \"alt\".",
-          "Keys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,",
-          "cmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,",
-          "cmdCtrlOptShift, all"
-        ],
-        "desc" : "Dictionary with keys that serve as aliases for all the various modifer key",
-        "doc" : "Dictionary with keys that serve as aliases for all the various modifer key\ncombinations. \"opt\" is an alias for \"alt\".\nKeys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,\ncmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,\ncmdCtrlOptShift, all",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt.modifiers",
-        "type" : "Variable",
-        "returns" : [
-
-        ],
-        "name" : "modifiers",
-        "parameters" : [
-
-        ]
-      },
-      {
-        "def" : "ModalExt:debug(enable)",
-        "stripped_doc" : [
-          "Enable or disable debugging",
-          ""
-        ],
-        "desc" : "Enable or disable debugging",
-        "doc" : "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:debug(enable)",
-        "type" : "Method",
-        "returns" : [
+        "returns": [
           " * Nothing"
         ],
-        "name" : "debug",
-        "parameters" : [
-          " * enable - Boolean indicating whether debugging should be on",
-          ""
-        ]
+        "signature": "ModalExt:debug(enable)",
+        "stripped_doc": "",
+        "type": "Function"
       },
       {
-        "def" : "ModalExt:hideCheatsheet()",
-        "stripped_doc" : [
-          "Hide the cheatsheet.",
-          ""
+        "def": "ModalExt:init()",
+        "desc": "Initializes a ModalExt",
+        "doc": "Initializes a ModalExt\nWhen a user calls hs.loadSpoon(), Hammerspoon will execute init()\nDo generally not perform any work, map any hotkeys, start any timers/watchers/etc.\nin the main scope of your init.lua. Instead, it should simply prepare an object\nwith methods to be used later, then return the object.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
+        "name": "init",
+        "parameters": [
+          " * None"
         ],
-        "desc" : "Hide the cheatsheet.",
-        "doc" : "Hide the cheatsheet.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:hideCheatsheet()",
-        "type" : "Method",
-        "returns" : [
-          "* Nothing"
-        ],
-        "name" : "hideCheatsheet",
-        "parameters" : [
-          "* None",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:init()",
-        "stripped_doc" : [
-          "Initializes a ModalExt",
-          "When a user calls hs.loadSpoon(), Hammerspoon will execute init()",
-          "Do generally not perform any work, map any hotkeys, start any timers\/watchers\/etc.",
-          "in the main scope of your init.lua. Instead, it should simply prepare an object",
-          "with methods to be used later, then return the object.",
-          ""
-        ],
-        "desc" : "Initializes a ModalExt",
-        "doc" : "Initializes a ModalExt\nWhen a user calls hs.loadSpoon(), Hammerspoon will execute init()\nDo generally not perform any work, map any hotkeys, start any timers\/watchers\/etc.\nin the main scope of your init.lua. Instead, it should simply prepare an object\nwith methods to be used later, then return the object.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:init()",
-        "type" : "Method",
-        "returns" : [
+        "returns": [
           " * ModalExt object"
         ],
-        "name" : "init",
-        "parameters" : [
-          " * None",
-          ""
-        ]
+        "signature": "ModalExt:init()",
+        "stripped_doc": "When a user calls hs.loadSpoon(), Hammerspoon will execute init()\nDo generally not perform any work, map any hotkeys, start any timers/watchers/etc.\nin the main scope of your init.lua. Instead, it should simply prepare an object\nwith methods to be used later, then return the object.",
+        "type": "Function"
       },
       {
-        "def" : "ModalExt:new()",
-        "stripped_doc" : [
-          "Create a new modal hotkey using bindings from the given table. Table elements are",
-          "as follows:",
-          "  * mod: table with hotkey modifiers",
-          "  * key: string with hotkey",
-          "  * title: string with modal title",
-          "  * keyTable: Dictionary",
-          "    * keys are strings descripbing keys to be active in modal",
-          "    * values are dictionary:",
-          "      * mod: Optional table of modifers for key.",
-          "      * func: Function to call when key pressed",
-          "      * desc: Description of action",
-          "  * extConfg: Optional dictionary with extended configuration, all optional.",
-          "    See ModalExt.defaults for values.",
-          "",
-          "An empty keyTable will result in a modal that shows the cheetsheet for the base",
-          "set of hotkeys. This can be useful in providing a help function of sorts.",
-          ""
+        "def": "ModalExt:start()",
+        "desc": "Start background activity. Currently does nothing.",
+        "doc": "Start background activity. Currently does nothing.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
+        "name": "start",
+        "parameters": [
+          " * None"
         ],
-        "desc" : "Create a new modal hotkey using bindings from the given table. Table elements are",
-        "doc" : "Create a new modal hotkey using bindings from the given table. Table elements are\nas follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\n\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.\n\nParameters:\n* modalConfig: Table with configuration\n\nReturns:\n* hs.hotkey.modal instance",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:new()",
-        "type" : "Method",
-        "returns" : [
-          "* hs.hotkey.modal instance"
-        ],
-        "name" : "new",
-        "parameters" : [
-          "* modalConfig: Table with configuration",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:showCheatsheet()",
-        "stripped_doc" : [
-          "Show a cheatsheet with available hotkeys for the current modal.",
-          ""
-        ],
-        "desc" : "Show a cheatsheet with available hotkeys for the current modal.",
-        "doc" : "Show a cheatsheet with available hotkeys for the current modal.\n\nParameters:\n* defaults: copy of ModalExt.defaults\n\nReturns:\n* Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:showCheatsheet()",
-        "type" : "Method",
-        "returns" : [
-          "* Nothing"
-        ],
-        "name" : "showCheatsheet",
-        "parameters" : [
-          "* defaults: copy of ModalExt.defaults",
-          ""
-        ]
-      },
-      {
-        "def" : "ModalExt:start()",
-        "stripped_doc" : [
-          "Start background activity. Currently does nothing.",
-          ""
-        ],
-        "desc" : "Start background activity. Currently does nothing.",
-        "doc" : "Start background activity. Currently does nothing.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:start()",
-        "type" : "Method",
-        "returns" : [
+        "returns": [
           " * ModalExt object"
         ],
-        "name" : "start",
-        "parameters" : [
-          " * None",
-          ""
-        ]
+        "signature": "ModalExt:start()",
+        "stripped_doc": "",
+        "type": "Function"
       },
       {
-        "def" : "ModalExt:stop()",
-        "stripped_doc" : [
-          "Stop background activity.",
-          ""
+        "def": "ModalExt:stop()",
+        "desc": "Stop background activity.",
+        "doc": "Stop background activity.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
+        "name": "stop",
+        "parameters": [
+          " * None"
         ],
-        "desc" : "Stop background activity.",
-        "doc" : "Stop background activity.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
-        "notes" : [
-
-        ],
-        "signature" : "ModalExt:stop()",
-        "type" : "Method",
-        "returns" : [
+        "returns": [
           " * ModalExt object"
         ],
-        "name" : "stop",
-        "parameters" : [
-          " * None",
-          ""
-        ]
+        "signature": "ModalExt:stop()",
+        "stripped_doc": "",
+        "type": "Function"
       }
     ],
-    "doc" : "Extended hotkey modal support.\nKudos for cheatsheet: https:\/\/github.com\/ashfinal\/awesome-hammerspoon",
-    "name" : "ModalExt"
+    "Method": [
+      {
+        "def": "ModalExt:hideCheatsheet()",
+        "desc": "Hide the cheatsheet.",
+        "doc": "Hide the cheatsheet.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
+        "name": "hideCheatsheet",
+        "parameters": [
+          "* None"
+        ],
+        "returns": [
+          "* Nothing"
+        ],
+        "signature": "ModalExt:hideCheatsheet()",
+        "stripped_doc": "",
+        "type": "Method"
+      },
+      {
+        "def": "ModalExt:showCheatsheet()",
+        "desc": "Show a cheatsheet with available hotkeys for the current modal.",
+        "doc": "Show a cheatsheet with available hotkeys for the current modal.\n\nParameters:\n* defaults: copy of ModalExt.defaults\n\nReturns:\n* Nothing",
+        "name": "showCheatsheet",
+        "parameters": [
+          "* defaults: copy of ModalExt.defaults"
+        ],
+        "returns": [
+          "* Nothing"
+        ],
+        "signature": "ModalExt:showCheatsheet()",
+        "stripped_doc": "",
+        "type": "Method"
+      }
+    ],
+    "Variable": [
+      {
+        "def": "ModalExt.defaults",
+        "desc": "Dictionary of defaults:",
+        "doc": "Dictionary of defaults:\n  * showCheatsheet: Boolean, default is true\n  * cheatsheetDelay: Number of seconds, default is 0\n  * cheatsheetFadeTime: Number of seconds to fade in, default is .5\n  * cheatsheetFont: Table describing font as descrined in hs.styledtext\n  * cheatsheetBGColor: Table describing background color per hs.drawing.color\n  * cheatsheetFGColor: Table describing foreground color per hs.drawing.color\n  * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext\n  * cheatsheetHMargin: horizontal margin between text and edge of background in pixels\n  * cheatsheetVMargin: virtucal margin between text and edge of background in pixels",
+        "name": "defaults",
+        "signature": "ModalExt.defaults",
+        "stripped_doc": "  * showCheatsheet: Boolean, default is true\n  * cheatsheetDelay: Number of seconds, default is 0\n  * cheatsheetFadeTime: Number of seconds to fade in, default is .5\n  * cheatsheetFont: Table describing font as descrined in hs.styledtext\n  * cheatsheetBGColor: Table describing background color per hs.drawing.color\n  * cheatsheetFGColor: Table describing foreground color per hs.drawing.color\n  * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext\n  * cheatsheetHMargin: horizontal margin between text and edge of background in pixels\n  * cheatsheetVMargin: virtucal margin between text and edge of background in pixels",
+        "type": "Variable"
+      },
+      {
+        "def": "ModalExt.modifiers",
+        "desc": "Dictionary with keys that serve as aliases for all the various modifer key",
+        "doc": "Dictionary with keys that serve as aliases for all the various modifer key\ncombinations. \"opt\" is an alias for \"alt\".\nKeys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,\ncmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,\ncmdCtrlOptShift, all",
+        "name": "modifiers",
+        "signature": "ModalExt.modifiers",
+        "stripped_doc": "combinations. \"opt\" is an alias for \"alt\".\nKeys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,\ncmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,\ncmdCtrlOptShift, all",
+        "type": "Variable"
+      }
+    ],
+    "desc": "Kudos for cheatsheet: https://github.com/ashfinal/awesome-hammerspoon",
+    "doc": "Kudos for cheatsheet: https://github.com/ashfinal/awesome-hammerspoon",
+    "items": [
+      {
+        "def": "ModalExt:debug(enable)",
+        "desc": "Enable or disable debugging",
+        "doc": "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
+        "name": "debug",
+        "parameters": [
+          " * enable - Boolean indicating whether debugging should be on"
+        ],
+        "returns": [
+          " * Nothing"
+        ],
+        "signature": "ModalExt:debug(enable)",
+        "stripped_doc": "",
+        "type": "Function"
+      },
+      {
+        "def": "ModalExt.defaults",
+        "desc": "Dictionary of defaults:",
+        "doc": "Dictionary of defaults:\n  * showCheatsheet: Boolean, default is true\n  * cheatsheetDelay: Number of seconds, default is 0\n  * cheatsheetFadeTime: Number of seconds to fade in, default is .5\n  * cheatsheetFont: Table describing font as descrined in hs.styledtext\n  * cheatsheetBGColor: Table describing background color per hs.drawing.color\n  * cheatsheetFGColor: Table describing foreground color per hs.drawing.color\n  * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext\n  * cheatsheetHMargin: horizontal margin between text and edge of background in pixels\n  * cheatsheetVMargin: virtucal margin between text and edge of background in pixels",
+        "name": "defaults",
+        "signature": "ModalExt.defaults",
+        "stripped_doc": "  * showCheatsheet: Boolean, default is true\n  * cheatsheetDelay: Number of seconds, default is 0\n  * cheatsheetFadeTime: Number of seconds to fade in, default is .5\n  * cheatsheetFont: Table describing font as descrined in hs.styledtext\n  * cheatsheetBGColor: Table describing background color per hs.drawing.color\n  * cheatsheetFGColor: Table describing foreground color per hs.drawing.color\n  * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext\n  * cheatsheetHMargin: horizontal margin between text and edge of background in pixels\n  * cheatsheetVMargin: virtucal margin between text and edge of background in pixels",
+        "type": "Variable"
+      },
+      {
+        "def": "ModalExt:hideCheatsheet()",
+        "desc": "Hide the cheatsheet.",
+        "doc": "Hide the cheatsheet.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
+        "name": "hideCheatsheet",
+        "parameters": [
+          "* None"
+        ],
+        "returns": [
+          "* Nothing"
+        ],
+        "signature": "ModalExt:hideCheatsheet()",
+        "stripped_doc": "",
+        "type": "Method"
+      },
+      {
+        "def": "ModalExt:init()",
+        "desc": "Initializes a ModalExt",
+        "doc": "Initializes a ModalExt\nWhen a user calls hs.loadSpoon(), Hammerspoon will execute init()\nDo generally not perform any work, map any hotkeys, start any timers/watchers/etc.\nin the main scope of your init.lua. Instead, it should simply prepare an object\nwith methods to be used later, then return the object.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
+        "name": "init",
+        "parameters": [
+          " * None"
+        ],
+        "returns": [
+          " * ModalExt object"
+        ],
+        "signature": "ModalExt:init()",
+        "stripped_doc": "When a user calls hs.loadSpoon(), Hammerspoon will execute init()\nDo generally not perform any work, map any hotkeys, start any timers/watchers/etc.\nin the main scope of your init.lua. Instead, it should simply prepare an object\nwith methods to be used later, then return the object.",
+        "type": "Function"
+      },
+      {
+        "def": "ModalExt.modifiers",
+        "desc": "Dictionary with keys that serve as aliases for all the various modifer key",
+        "doc": "Dictionary with keys that serve as aliases for all the various modifer key\ncombinations. \"opt\" is an alias for \"alt\".\nKeys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,\ncmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,\ncmdCtrlOptShift, all",
+        "name": "modifiers",
+        "signature": "ModalExt.modifiers",
+        "stripped_doc": "combinations. \"opt\" is an alias for \"alt\".\nKeys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,\ncmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,\ncmdCtrlOptShift, all",
+        "type": "Variable"
+      },
+      {
+        "def": "ModalExt:new()",
+        "desc": "Create a new modal hotkey using bindings from the given table. Table elements are",
+        "doc": "Create a new modal hotkey using bindings from the given table. Table elements are\nas follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\n\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.\n\nParameters:\n* modalConfig: Table with configuration\n\nReturns:\n* hs.hotkey.modal instance",
+        "name": "new",
+        "parameters": [
+          "* modalConfig: Table with configuration"
+        ],
+        "returns": [
+          "* hs.hotkey.modal instance"
+        ],
+        "signature": "ModalExt:new()",
+        "stripped_doc": "as follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.",
+        "type": "Constructor"
+      },
+      {
+        "def": "ModalExt:showCheatsheet()",
+        "desc": "Show a cheatsheet with available hotkeys for the current modal.",
+        "doc": "Show a cheatsheet with available hotkeys for the current modal.\n\nParameters:\n* defaults: copy of ModalExt.defaults\n\nReturns:\n* Nothing",
+        "name": "showCheatsheet",
+        "parameters": [
+          "* defaults: copy of ModalExt.defaults"
+        ],
+        "returns": [
+          "* Nothing"
+        ],
+        "signature": "ModalExt:showCheatsheet()",
+        "stripped_doc": "",
+        "type": "Method"
+      },
+      {
+        "def": "ModalExt:start()",
+        "desc": "Start background activity. Currently does nothing.",
+        "doc": "Start background activity. Currently does nothing.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
+        "name": "start",
+        "parameters": [
+          " * None"
+        ],
+        "returns": [
+          " * ModalExt object"
+        ],
+        "signature": "ModalExt:start()",
+        "stripped_doc": "",
+        "type": "Function"
+      },
+      {
+        "def": "ModalExt:stop()",
+        "desc": "Stop background activity.",
+        "doc": "Stop background activity.\n\nParameters:\n * None\n\nReturns:\n * ModalExt object",
+        "name": "stop",
+        "parameters": [
+          " * None"
+        ],
+        "returns": [
+          " * ModalExt object"
+        ],
+        "signature": "ModalExt:stop()",
+        "stripped_doc": "",
+        "type": "Function"
+      }
+    ],
+    "name": "ModalExt",
+    "stripped_doc": "",
+    "submodules": [],
+    "type": "Module"
   }
 ]
