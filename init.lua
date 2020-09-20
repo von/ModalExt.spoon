@@ -45,7 +45,7 @@ ModalExt.modifiers = {
 
 
 --- ModalExt:debug(enable)
---- Method
+--- Function
 --- Enable or disable debugging
 ---
 --- Parameters:
@@ -64,7 +64,7 @@ function ModalExt:debug(enable)
 end
 
 --- ModalExt:init()
---- Method
+--- Function
 --- Initializes a ModalExt
 --- When a user calls hs.loadSpoon(), Hammerspoon will execute init()
 --- Do generally not perform any work, map any hotkeys, start any timers/watchers/etc.
@@ -126,7 +126,7 @@ ModalExt.defaults = {
 }
 
 --- ModalExt:start()
---- Method
+--- Function
 --- Start background activity. Currently does nothing.
 ---
 --- Parameters:
@@ -140,7 +140,7 @@ function ModalExt:start()
 end
 
 --- ModalExt:stop()
---- Method
+--- Function
 --- Stop background activity.
 ---
 --- Parameters:
@@ -154,7 +154,7 @@ function ModalExt:stop()
 end
 
 --- ModalExt:new()
---- Method
+--- Constructor
 --- Create a new modal hotkey using bindings from the given table. Table elements are
 --- as follows:
 ---   * mod: table with hotkey modifiers
