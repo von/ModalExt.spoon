@@ -7,7 +7,7 @@ local ModalExt = {}
 
 -- Metadata
 ModalExt.name="ModalExt"
-ModalExt.version="0.4"
+ModalExt.version="0.5"
 ModalExt.author="Von Welch"
 -- https://opensource.org/licenses/Apache-2.0
 ModalExt.license="Apache-2.0"
@@ -253,6 +253,27 @@ function ModalExt:new(mod, key, title, modalConfig, extConfig)
   end
 
   return modalKey
+end
+
+--- ModalExt:newWithoutHotkey()
+--- Constructor
+--- Create a new modal without binding it to a hotkey. This allows it to be
+--- bound to a hotkey via hs.hotkey.new(), for example:
+---
+--- ```lua
+--- hs.hotkey.new({"ctrl"}, "s", function() modal:enter() end)```
+---
+--- For a description of modalConfig, see ModalExt:new()
+---
+--- Parameters:
+--- * modalConfig: Table with configuration
+--- * extConfg: Optional dictionary with extended configuration, all optional.
+---   See ModalExt.defaults for values.
+---
+--- Returns:
+--- * hs.hotkey.modal instance
+function ModalExt:newWithoutHotkey(modalConfig, extConfig)
+  return self:new(nil, nil, nil, modalConfig, extConfig)
 end
 
 --- ModalExt:hideCheatsheet()
