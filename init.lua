@@ -155,25 +155,37 @@ end
 
 --- ModalExt:new()
 --- Constructor
---- Create a new modal hotkey using bindings from the given table. Table elements are
---- as follows:
----   * mod: table with hotkey modifiers
----   * key: string with hotkey
----   * title: string with modal title
----   * keyTable: Dictionary
----     * keys are strings descripbing keys to be active in modal
----     * values are dictionary:
----       * mod: Optional table of modifers for key.
----       * func: Function to call when key pressed
----       * desc: Description of action
----   * extConfg: Optional dictionary with extended configuration, all optional.
----     See ModalExt.defaults for values.
+--- Create a new modal hotkey using bindings from the given table.
+--- Elements of modalConfig are:
+---   * keys are strings descripbing keys to be active in modal
+---   * values are dictionary:
+---     * mod: Optional table of modifers for key.
+---     * func: Function to call when key pressed
+---     * desc: Description of action
 ---
---- An empty keyTable will result in a modal that shows the cheetsheet for the base
+--- Example modalConfig:
+--- ```lua
+--- {
+---  A = {
+---    func = function() hs.alsert("A") end,
+---    desc = "A key"
+---  },
+---  B = {
+---    func = function() hs.alert("B") end,
+---    desc = "B key"
+---  }
+---}```
+---
+--- An empty modalConfig will result in a modal that shows the cheetsheet for the base
 --- set of hotkeys. This can be useful in providing a help function of sorts.
 ---
 --- Parameters:
+--- * mod: table with hotkey modifiers
+--- * key: string with hotkey
+--- * title: string with modal title
 --- * modalConfig: Table with configuration
+--- * extConfg: Optional dictionary with extended configuration, all optional.
+---   See ModalExt.defaults for values.
 ---
 --- Returns:
 --- * hs.hotkey.modal instance
