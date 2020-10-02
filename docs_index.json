@@ -41,9 +41,15 @@
     "type": "Function"
   },
   {
-    "desc": "Create a new modal hotkey using bindings from the given table. Table elements are",
+    "desc": "Create a new modal hotkey using bindings from the given table.",
     "module": "ModalExt",
     "name": "new",
+    "type": "Constructor"
+  },
+  {
+    "desc": "Create a new modal without binding it to a hotkey. This allows it to be",
+    "module": "ModalExt",
+    "name": "newWithoutHotkey",
     "type": "Constructor"
   },
   {

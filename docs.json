@@ -5,17 +5,39 @@
     "Constructor": [
       {
         "def": "ModalExt:new()",
-        "desc": "Create a new modal hotkey using bindings from the given table. Table elements are",
-        "doc": "Create a new modal hotkey using bindings from the given table. Table elements are\nas follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\n\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.\n\nParameters:\n* modalConfig: Table with configuration\n\nReturns:\n* hs.hotkey.modal instance",
+        "desc": "Create a new modal hotkey using bindings from the given table.",
+        "doc": "Create a new modal hotkey using bindings from the given table.\nElements of modalConfig are:\n  * keys are strings descripbing keys to be active in modal\n  * values are dictionary:\n    * mod: Optional table of modifers for key.\n    * func: Function to call when key pressed\n    * desc: Description of action\n\nExample modalConfig:\n```lua\n{\n A = {\n   func = function() hs.alsert(\"A\") end,\n   desc = \"A key\"\n },\n B = {\n   func = function() hs.alert(\"B\") end,\n   desc = \"B key\"\n }\n}```\n\nAn empty modalConfig will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.\n\nParameters:\n* mod: table with hotkey modifiers\n* key: string with hotkey\n* title: string with modal title\n* modalConfig: Table with configuration\n* extConfg: Optional dictionary with extended configuration, all optional.\n  See ModalExt.defaults for values.\n\nReturns:\n* hs.hotkey.modal instance",
         "name": "new",
         "parameters": [
-          "* modalConfig: Table with configuration"
+          "* mod: table with hotkey modifiers",
+          "* key: string with hotkey",
+          "* title: string with modal title",
+          "* modalConfig: Table with configuration",
+          "* extConfg: Optional dictionary with extended configuration, all optional.",
+          "  See ModalExt.defaults for values."
         ],
         "returns": [
           "* hs.hotkey.modal instance"
         ],
         "signature": "ModalExt:new()",
-        "stripped_doc": "as follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.",
+        "stripped_doc": "Elements of modalConfig are:\n  * keys are strings descripbing keys to be active in modal\n  * values are dictionary:\n    * mod: Optional table of modifers for key.\n    * func: Function to call when key pressed\n    * desc: Description of action\nExample modalConfig:\n```lua\n{\n A = {\n   func = function() hs.alsert(\"A\") end,\n   desc = \"A key\"\n },\n B = {\n   func = function() hs.alert(\"B\") end,\n   desc = \"B key\"\n }\n}```\nAn empty modalConfig will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.",
+        "type": "Constructor"
+      },
+      {
+        "def": "ModalExt:newWithoutHotkey()",
+        "desc": "Create a new modal without binding it to a hotkey. This allows it to be",
+        "doc": "Create a new modal without binding it to a hotkey. This allows it to be\nbound to a hotkey via hs.hotkey.new(), for example:\n\n```lua\nhs.hotkey.new({\"ctrl\"}, \"s\", function() modal:enter() end)```\n\nFor a description of modalConfig, see ModalExt:new()\n\nParameters:\n* modalConfig: Table with configuration\n* extConfg: Optional dictionary with extended configuration, all optional.\n  See ModalExt.defaults for values.\n\nReturns:\n* hs.hotkey.modal instance",
+        "name": "newWithoutHotkey",
+        "parameters": [
+          "* modalConfig: Table with configuration",
+          "* extConfg: Optional dictionary with extended configuration, all optional.",
+          "  See ModalExt.defaults for values."
+        ],
+        "returns": [
+          "* hs.hotkey.modal instance"
+        ],
+        "signature": "ModalExt:newWithoutHotkey()",
+        "stripped_doc": "bound to a hotkey via hs.hotkey.new(), for example:\n```lua\nhs.hotkey.new({\"ctrl\"}, \"s\", function() modal:enter() end)```\nFor a description of modalConfig, see ModalExt:new()",
         "type": "Constructor"
       }
     ],
@@ -203,17 +225,39 @@
       },
       {
         "def": "ModalExt:new()",
-        "desc": "Create a new modal hotkey using bindings from the given table. Table elements are",
-        "doc": "Create a new modal hotkey using bindings from the given table. Table elements are\nas follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\n\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.\n\nParameters:\n* modalConfig: Table with configuration\n\nReturns:\n* hs.hotkey.modal instance",
+        "desc": "Create a new modal hotkey using bindings from the given table.",
+        "doc": "Create a new modal hotkey using bindings from the given table.\nElements of modalConfig are:\n  * keys are strings descripbing keys to be active in modal\n  * values are dictionary:\n    * mod: Optional table of modifers for key.\n    * func: Function to call when key pressed\n    * desc: Description of action\n\nExample modalConfig:\n```lua\n{\n A = {\n   func = function() hs.alsert(\"A\") end,\n   desc = \"A key\"\n },\n B = {\n   func = function() hs.alert(\"B\") end,\n   desc = \"B key\"\n }\n}```\n\nAn empty modalConfig will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.\n\nParameters:\n* mod: table with hotkey modifiers\n* key: string with hotkey\n* title: string with modal title\n* modalConfig: Table with configuration\n* extConfg: Optional dictionary with extended configuration, all optional.\n  See ModalExt.defaults for values.\n\nReturns:\n* hs.hotkey.modal instance",
         "name": "new",
         "parameters": [
-          "* modalConfig: Table with configuration"
+          "* mod: table with hotkey modifiers",
+          "* key: string with hotkey",
+          "* title: string with modal title",
+          "* modalConfig: Table with configuration",
+          "* extConfg: Optional dictionary with extended configuration, all optional.",
+          "  See ModalExt.defaults for values."
         ],
         "returns": [
           "* hs.hotkey.modal instance"
         ],
         "signature": "ModalExt:new()",
-        "stripped_doc": "as follows:\n  * mod: table with hotkey modifiers\n  * key: string with hotkey\n  * title: string with modal title\n  * keyTable: Dictionary\n    * keys are strings descripbing keys to be active in modal\n    * values are dictionary:\n      * mod: Optional table of modifers for key.\n      * func: Function to call when key pressed\n      * desc: Description of action\n  * extConfg: Optional dictionary with extended configuration, all optional.\n    See ModalExt.defaults for values.\nAn empty keyTable will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.",
+        "stripped_doc": "Elements of modalConfig are:\n  * keys are strings descripbing keys to be active in modal\n  * values are dictionary:\n    * mod: Optional table of modifers for key.\n    * func: Function to call when key pressed\n    * desc: Description of action\nExample modalConfig:\n```lua\n{\n A = {\n   func = function() hs.alsert(\"A\") end,\n   desc = \"A key\"\n },\n B = {\n   func = function() hs.alert(\"B\") end,\n   desc = \"B key\"\n }\n}```\nAn empty modalConfig will result in a modal that shows the cheetsheet for the base\nset of hotkeys. This can be useful in providing a help function of sorts.",
+        "type": "Constructor"
+      },
+      {
+        "def": "ModalExt:newWithoutHotkey()",
+        "desc": "Create a new modal without binding it to a hotkey. This allows it to be",
+        "doc": "Create a new modal without binding it to a hotkey. This allows it to be\nbound to a hotkey via hs.hotkey.new(), for example:\n\n```lua\nhs.hotkey.new({\"ctrl\"}, \"s\", function() modal:enter() end)```\n\nFor a description of modalConfig, see ModalExt:new()\n\nParameters:\n* modalConfig: Table with configuration\n* extConfg: Optional dictionary with extended configuration, all optional.\n  See ModalExt.defaults for values.\n\nReturns:\n* hs.hotkey.modal instance",
+        "name": "newWithoutHotkey",
+        "parameters": [
+          "* modalConfig: Table with configuration",
+          "* extConfg: Optional dictionary with extended configuration, all optional.",
+          "  See ModalExt.defaults for values."
+        ],
+        "returns": [
+          "* hs.hotkey.modal instance"
+        ],
+        "signature": "ModalExt:newWithoutHotkey()",
+        "stripped_doc": "bound to a hotkey via hs.hotkey.new(), for example:\n```lua\nhs.hotkey.new({\"ctrl\"}, \"s\", function() modal:enter() end)```\nFor a description of modalConfig, see ModalExt:new()",
         "type": "Constructor"
       },
       {

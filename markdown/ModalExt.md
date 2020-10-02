@@ -14,6 +14,7 @@ Kudos for cheatsheet: https://github.com/ashfinal/awesome-hammerspoon
  * [stop](#stop)
 * Constructors - API calls which return an object, typically one that offers API methods
  * [new](#new)
+ * [newWithoutHotkey](#newWithoutHotkey)
 * Methods - API calls which can only be made on an object returned by a constructor
  * [hideCheatsheet](#hideCheatsheet)
  * [showCheatsheet](#showCheatsheet)
@@ -74,8 +75,16 @@ Kudos for cheatsheet: https://github.com/ashfinal/awesome-hammerspoon
 | --------------------------------------------|-------------------------------------------------------------------------------------|
 | **Signature**                               | `ModalExt:new()`                                                                    |
 | **Type**                                    | Constructor                                                                     |
-| **Description**                             | Create a new modal hotkey using bindings from the given table. Table elements are                                                                     |
-| **Parameters**                              | <ul><li>* modalConfig: Table with configuration</li></ul> |
+| **Description**                             | Create a new modal hotkey using bindings from the given table.                                                                     |
+| **Parameters**                              | <ul><li>* mod: table with hotkey modifiers</li><li>* key: string with hotkey</li><li>* title: string with modal title</li><li>* modalConfig: Table with configuration</li><li>* extConfg: Optional dictionary with extended configuration, all optional.</li><li>  See ModalExt.defaults for values.</li></ul> |
+| **Returns**                                 | <ul><li>* hs.hotkey.modal instance</li></ul>          |
+
+| [newWithoutHotkey](#newWithoutHotkey)         |                                                                                     |
+| --------------------------------------------|-------------------------------------------------------------------------------------|
+| **Signature**                               | `ModalExt:newWithoutHotkey()`                                                                    |
+| **Type**                                    | Constructor                                                                     |
+| **Description**                             | Create a new modal without binding it to a hotkey. This allows it to be                                                                     |
+| **Parameters**                              | <ul><li>* modalConfig: Table with configuration</li><li>* extConfg: Optional dictionary with extended configuration, all optional.</li><li>  See ModalExt.defaults for values.</li></ul> |
 | **Returns**                                 | <ul><li>* hs.hotkey.modal instance</li></ul>          |
 
 ### Methods
