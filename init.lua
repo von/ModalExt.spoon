@@ -18,7 +18,7 @@ ModalExt.homepage="https://github.com/von/ModalExt.spoon"
 --- Variable
 --- Dictionary with keys that serve as aliases for all the various modifer key
 --- combinations. "opt" is an alias for "alt".
---- Keys: none, ctrl, cmd, alt, opt, altShift, optShift, cmdAlt, cmdOpt, cmdShift,
+--- Keys: none, ctrl, cmd, alt, opt, shift, altShift, optShift, cmdAlt, cmdOpt, cmdShift,
 --- cmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift,
 --- cmdCtrlOptShift, all
 ModalExt.modifiers = {
@@ -27,6 +27,7 @@ ModalExt.modifiers = {
   cmd =             {'cmd'},
   alt =             {'alt'},
   opt =             {'alt'},
+  shift =           {'shift'},
   altShift =        {'alt', 'shift'},
   optShift =        {'alt', 'shift'},
   cmdAlt =          {'cmd', 'alt'},
