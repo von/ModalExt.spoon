@@ -19,8 +19,8 @@ ModalExt.homepage="https://github.com/von/ModalExt.spoon"
 --- Dictionary with keys that serve as aliases for all the various modifer key
 --- combinations. "opt" is an alias for "alt".
 --- Keys: none, ctrl, cmd, alt, opt, shift, altShift, optShift, cmdAlt, cmdOpt, cmdShift,
---- cmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift, cmdAltCtrl,
---- cmdOptCtrl, cmdCtrlOptShift, all
+--- cmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift, cmdOptCtrl,
+--- cmdCtrlOptShift, all
 ModalExt.modifiers = {
   none =            {},
   ctrl =            {'ctrl'},
