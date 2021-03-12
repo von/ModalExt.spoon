@@ -292,11 +292,6 @@ function ModalExt:hideCheatsheet()
   if self.cheatsheetTimer then
     self.cheatsheetTimer:stop()
   end
-  -- The disableScreenUpdates() and subsequent enableScreenUpdates()
-  -- seems to make sure the help text actually gets off the screen
-  -- before we execute our function, which is important if we're
-  -- doing something such as a screen capture.
-  hs.drawing.disableScreenUpdates()
   if self.cheatsheetBG then
     self.cheatsheetBG:delete()
     self.cheatsheetBG = nil
@@ -309,7 +304,6 @@ function ModalExt:hideCheatsheet()
     self.cheatsheetTextRight:delete()
     self.cheatsheetTextRight = nil
   end
-  hs.drawing.enableScreenUpdates()
 end
 
 --- ModalExt:showCheatsheet()
