@@ -224,7 +224,7 @@ function ModalExt:new(mod, key, title, modalConfig, extConfig)
   for mkey, conf in pairs(modalConfig) do
     local func = conf["func"]
     if func == nil then
-      log.ef("Function for modal %s key %s is nil", key, mkey)
+      self.log.ef("Function for modal %s key %s is nil", key, mkey)
     else
       local mod = conf["mod"] or NoMod
       modalKey:bind(mod, mkey, conf["desc"], wrapFunc(func))
