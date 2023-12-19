@@ -236,8 +236,8 @@ function ModalExt:new(mod, key, title, modalConfig, extConfig)
     function() modalKey:exit() end)
 
 
--- Callback for modal being entered. Exits other modal that may
--- be active and show cheatsheet.
+  -- Callback for modal being entered. Exits other modal that may
+  -- be active and show cheatsheet.
   modalKey.entered = function()
     if self.activeModal then
       self.activeModal:exit()
