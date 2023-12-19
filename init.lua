@@ -226,13 +226,14 @@ function ModalExt:new(mod, key, title, modalConfig, extConfig)
     if func == nil then
       self.log.ef("Function for modal %s key %s is nil", key, mkey)
     else
-      local mod = conf["mod"] or NoMod
+      local mod = conf["mod"] or self.modifiers.none
       modalKey:bind(mod, mkey, conf["desc"], wrapFunc(func))
     end
   end
 
   -- Escape exits the modal
-  modalKey:bind(NoMod, "escape", "Cancel", function() modalKey:exit() end)
+  modalKey:bind(self.modifiers.none, "escape", "Cancel",
+    function() modalKey:exit() end)
 
 
 -- Callback for modal being entered. Exits other modal that may
