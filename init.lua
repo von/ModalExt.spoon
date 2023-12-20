@@ -161,6 +161,8 @@ end
 --- Create a new modal hotkey using bindings from the given table.
 --- Elements of modalConfig are:
 ---   * keys are strings descripbing keys to be active in modal
+---     The key can be prefixed by modifiers as recognized by
+---     hs.hotkey:bind()
 ---   * values are dictionary:
 ---     * mod: Optional table of modifers for key.
 ---     * func: Function to call when key pressed
@@ -176,6 +178,10 @@ end
 ---  B = {
 ---    func = function() hs.alert("B") end,
 ---    desc = "B key"
+---  },
+---  ["shift-B"] = {
+---    func = function() hs.alert("shift-B") end,
+---    desc = "Shift-B key"
 ---  }
 ---}```
 ---
@@ -226,7 +232,15 @@ function ModalExt:new(mod, key, title, modalConfig, extConfig)
     if func == nil then
       self.log.ef("Function for modal %s key %s is nil", key, mkey)
     else
-      local mod = conf["mod"] or self.modifiers.none
+      local mod = ""
+      if #mkey > 1 then
+        -- If mkey is >1 character, everything up to the last character
+        -- is treated as modifiers.
+        -- The following may leave a trailing dash (e.g. "shift-") but that
+        -- doesn't seem to hurt anything.
+        mod = string.sub(mkey, 1, -2)
+        mkey = string.sub(mkey, -1)
+      end
       modalKey:bind(mod, mkey, conf["desc"], wrapFunc(func))
     end
   end
