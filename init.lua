@@ -348,7 +348,11 @@ function ModalExt:showCheatsheet(defaults)
   local mainScreen = hs.screen.mainScreen()
   local mainRes = mainScreen:fullFrame()
 
-  local rectBG = hs.geometry.rect(mainRes.w/5, mainRes.h/5, mainRes.w/5*3, mainRes.h/5*3)
+  local rectBG = hs.geometry.rect(
+    mainRes.w/5,
+    mainRes.h/5,
+    mainRes.w/5*3,
+    mainRes.h/5*3)
   self.cheatsheetBG = hs.drawing.rectangle(rectBG)
   self.cheatsheetBG:setFillColor(defaults.cheatsheetBGColor)
   self.cheatsheetBG:setRoundedRectRadii(10, 10)
