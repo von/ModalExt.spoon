@@ -18,9 +18,9 @@ ModalExt.homepage="https://github.com/von/ModalExt.spoon"
 --- Variable
 --- Dictionary with keys that serve as aliases for all the various modifer key
 --- combinations. "opt" is an alias for "alt".
---- Keys: none, ctrl, cmd, alt, opt, shift, altShift, optShift, cmdAlt, cmdOpt, cmdShift,
---- cmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift, cmdOptShift, cmdAltCtrl,
---- cmdOptCtrl, cmdCtrlOptShift, all
+--- Keys: none, ctrl, cmd, alt, opt, shift, altShift, optShift, cmdAlt,
+--- cmdOpt, cmdShift, cmdCtrl, ctrlAlt, ctrlOpt, cmdCtrlShift, cmdAltShift,
+--- cmdOptShift, cmdAltCtrl, cmdOptCtrl, cmdCtrlOptShift, all
 ModalExt.modifiers = {
   none =            {},
   ctrl =            {'ctrl'},
@@ -108,11 +108,16 @@ end
 ---   * cheatsheetDelay: Number of seconds, default is 0
 ---   * cheatsheetFadeTime: Number of seconds to fade in, default is .5
 ---   * cheatsheetFont: Table describing font as descrined in hs.styledtext
----   * cheatsheetBGColor: Table describing background color per hs.drawing.color
----   * cheatsheetFGColor: Table describing foreground color per hs.drawing.color
----   * cheatsheetParagraphStyle: Table describing the paragraph style per hs.styledtext
----   * cheatsheetHMargin: horizontal margin between text and edge of background in pixels
----   * cheatsheetVMargin: virtucal margin between text and edge of background in pixels
+---   * cheatsheetBGColor: Table describing background color per
+---     hs.drawing.color
+---   * cheatsheetFGColor: Table describing foreground color per
+---     hs.drawing.color
+---   * cheatsheetParagraphStyle: Table describing the paragraph style
+---     per hs.styledtext
+---   * cheatsheetHMargin: horizontal margin between text and edge of
+---     background in pixels
+---   * cheatsheetVMargin: virtucal margin between text and edge of
+---     background in pixels
 ModalExt.defaults = {
   showCheatsheet = true,
   cheatsheetDelay = 0,
@@ -185,8 +190,9 @@ end
 ---  }
 ---}```
 ---
---- An empty modalConfig will result in a modal that shows the cheetsheet for the base
---- set of hotkeys. This can be useful in providing a help function of sorts.
+--- An empty modalConfig will result in a modal that shows the cheetsheet
+--- for the base set of hotkeys. This can be useful in providing a help
+--- function of sorts.
 ---
 --- Parameters:
 --- * mod: table with hotkey modifiers
