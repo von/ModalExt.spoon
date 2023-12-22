@@ -384,6 +384,9 @@ function ModalExt:showCheatsheet(defaults)
 
   local textLeft = ""
   local textRight = ""
+  -- TODO: If we have more hotkeys than room to print them, they will
+  -- silently be truncated. Handle this somehow.
+  -- See https://github.com/von/ModalExt.spoon/issues/1
   for i=1,#hotkeys do
     if math.fmod(i, 2) == 1 then
       textLeft = textLeft .. hotkeys[i].msg .. "\n"
