@@ -43,7 +43,15 @@ ModalExt.modifiers = {
   cmdAltCtrl =      {'cmd', 'alt', 'ctrl'},
   cmdOptCtrl =      {'cmd', 'alt', 'ctrl'},
   cmdCtrlOptShift = {'cmd', 'alt', 'ctrl', 'shift' },
-  all =             {'cmd', 'alt', 'ctrl', 'shift' }
+  all =             {'cmd', 'alt', 'ctrl', 'shift' },
+  unicode = {
+    ctrl =          "⌃",
+    shift =         "⇧",
+    cmd =           "⌘",
+    alt =           "⌥",
+    opt =           "⌥",
+    all =           "⌃⇧⌘⌥"
+  }
 }
 
 
@@ -379,8 +387,35 @@ function ModalExt:showCheatsheet(defaults)
 
   -- Filter out all hotkeys which don't have a help string defined
   local hotkeys = hs.fnutils.filter(
-    hs.hotkey.getHotkeys(),
+    -- Use just hotkeys from modal if one is active.
+    -- Note: 'keys' is not advertised in the API for hs.hotkey.modal
+    --       so this could break at some point.
+    self.activeModal and self.activeModal.keys or hs.hotkey.getHotKeys(),
     function(h) return h.msg ~= h.idx end)
+
+  table.sort(hotkeys,
+    function(a,b)
+      -- Optimization: If both are single, unmodified keys, then
+      -- sort alphabetically
+      if #a.idx == 1 and #b.idx ==1 then return a.idx < b.idx end
+
+      -- Split keys into modifiers and keys
+      -- Note keys could be a single key or something like "ESCAPE"
+      _, _, amod, akey = string.find(a.idx, "([⌃⇧⌘⌥]*)(.*)")
+      _, _, bmod, bkey = string.find(b.idx, "([⌃⇧⌘⌥]*)(.*)")
+
+      -- If keys aren't equal, then sort by key
+      if akey ~= bkey then
+        -- Sort by key length
+        if #akey ~= #bkey then return #akey < #bkey end
+
+        -- If same length, then sort alphabetically
+        return akey < bkey
+      end
+
+      -- Same keys, sort by modifiers
+      return amod < bmod
+    end)
 
   local textLeft = ""
   local textRight = ""
