@@ -243,13 +243,22 @@ function ModalExt:new(mod, key, title, modalConfig, extConfig)
       self.log.ef("Function for modal %s key %s is nil", key, mkey)
     else
       local mod = ""
-      if #mkey > 1 then
-        -- If mkey is >1 character, everything up to the last character
-        -- is treated as modifiers.
-        -- The following may leave a trailing dash (e.g. "shift-") but that
-        -- doesn't seem to hurt anything.
-        mod = string.sub(mkey, 1, -2)
-        mkey = string.sub(mkey, -1)
+      -- mkey could be any of the following formats:
+      --   A single character
+      --   A key name: ESCAPE, SPACE, TAB, etc. (upper or lower case)
+      --   One or more symbolic modifiers (⌃⇧⌘⌥) followed by a character or
+      --     key name.
+      --   One or more modifier names, separared with dashes, followed by
+      --     a character or key name ("shift-A", "shift-space").
+      if mkey:match("-") then
+        -- Looks like we modifiers names
+        -- Split on last occurence of "-"
+        _,_,mod,mkey = mkey:find("^(.*)-([^-]*)$")
+      elseif mkey:match("([⌃⇧⌘⌥]*)") then
+        -- Looks like we have modifiers symbols. Split them off.
+        _,_,mod,mkey = mkey:find("^([⌃⇧⌘⌥]*)(.*)$")
+      else
+        -- Assume key or key name. No parsing needed.
       end
       modalKey:bind(mod, mkey, conf["desc"], wrapFunc(func))
     end
