@@ -250,9 +250,10 @@ function ModalExt:new(mod, key, title, modalConfig, extConfig)
       --     key name.
       --   One or more modifier names, separared with dashes, followed by
       --     a character or key name ("shift-A", "shift-space").
-      if mkey:match("-") then
+      if mkey:match("-") and #mkey > 1 then
         -- Looks like we modifiers names
         -- Split on last occurence of "-"
+        -- "#mkey > 1" avoids matching lone "-" charcter
         _,_,mod,mkey = mkey:find("^(.*)-([^-]*)$")
       elseif mkey:match("([⌃⇧⌘⌥]*)") then
         -- Looks like we have modifiers symbols. Split them off.
